@@ -6,20 +6,19 @@ import lombok.*;
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
-@RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class MessageResponse {
 	private LocalDateTime timestamp;
-	@NonNull private Status status;
-	@NonNull private String message;
+	private Status status;
+	private String message;
 	private String additionalMessage;
 
-	public MessageResponse(String status, String message, String additionalMessage) {
+	public MessageResponse(Status status, String message, String additionalMessage) {
 		this.timestamp = LocalDateTime.now();
-		this.status = Status.valueOf(status);
+		this.status = status;
 		this.message = message;
 		this.additionalMessage = additionalMessage;
 	}

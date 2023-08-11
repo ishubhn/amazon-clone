@@ -1,7 +1,6 @@
 package io.merch.amazon.services.impl;
 
 import io.merch.amazon.exception.InvalidAgeException;
-import io.merch.amazon.exception.InvalidArgumentException;
 import io.merch.amazon.exception.NoSuchUserExistException;
 import io.merch.amazon.models.UsersEntity;
 import io.merch.amazon.models.dto.Status;
@@ -17,6 +16,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -32,16 +32,18 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	static boolean flag = false;
+
 	/*
-	* @author - Shubham Nagre
-	* @Param - emailId
-	* Fetch user from db using email id
-	* */
+	 * @author - Shubham Nagre
+	 * @Param - emailId
+	 * Fetch user from db using email id
+	 * */
 	@Override
 	public UserResponse getUserByEmailId(String emailId) {
-		 Optional<UsersEntity> user = userRepo.findByEmailId(emailId);
+		Optional<UsersEntity> user = userRepo.findByEmailId(emailId);
 
-		 if (user.isPresent()) {
+		if (user.isPresent()) {
 			 return UserMapper.toUsersResponse(user.get());
 		 } else {
 			 throw new NoSuchUserExistException(String.format("No such user present with email id -> %s", emailId));
@@ -84,28 +86,22 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public MessageResponse deleteUser(UserDeleteRequest request) {
-		if (isUserExist(request.getUserEmailId(), request.getContactNumber())) {
-			if (request.getUserEmailId() == null && request.getContactNumber() != null) {
-				Optional<UsersEntity> user = userRepo.findByContactNumber(request.getContactNumber());
-				user.ifPresent(entity -> userRepo.delete(entity));
+	@Transactional
+	public boolean deleteUser(String identifier) {
+		Optional<UsersEntity> user;
 
-				return new MessageResponse(Status.SUCCESS, String.format("User is deleted successfully. Param -> %s",
-						request.getContactNumber()));
-			} else if (request.getUserEmailId() != null && request.getContactNumber() == null) {
-				Optional<UsersEntity> user = userRepo.findByContactNumber(request.getUserEmailId());
-				user.ifPresent(entity -> userRepo.delete(entity));
-
-				return new MessageResponse(Status.SUCCESS, String.format("User is deleted successfully. Param -> %s",
-						request.getUserEmailId()));
-			} else {
-				log.info("Invalid request! Either User Email Id or Contact Number should be present");
-				throw new InvalidArgumentException("Invalid request! Either User Email Id " +
-						"or Contact Number should be present");
-			}
+		if (identifier.contains("@")) {
+			user = userRepo.findByEmailId(identifier);
 		} else {
-			throw new NoSuchUserExistException(String.format("No such user exist with either contact number -> '%s' " +
-					"and/or email id -> '%s'", request.getContactNumber(), request.getUserEmailId()));
+			user = userRepo.findByContactNumber(identifier);
+		}
+
+		if (user.isPresent()) {
+			userRepo.delete(user.get());
+			log.info("user is deleted successfully! (identifier -> {})", identifier);
+			return true;
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user exist in the system with identifier -> %s", identifier));
 		}
 	}
 
@@ -145,21 +141,23 @@ public class UserServiceImpl implements UserService {
 		// If user is not already present, then create new user
 		if (!flag) {
 			if (request.getPassword().equals(request.getConfirmPassword())) {
-				UsersEntity usersEntity = modelMapper.map(request, UsersEntity.class);
+				UsersEntity usersEntity = UserMapper.toUsersEntity(request);
 				usersEntity.setAge(calculateAge(request.getDateOfBirth()));
 				userRepo.save(usersEntity);
 
 				log.info("User is created successfully! User email id -> {}", request.getEmailId());
 				return new MessageResponse(Status.SUCCESS,
-						String.format("User is created successfully! User email id -> %s", request.getEmailId()));
+						String.format("User is created successfully! User email id -> %s", request.getEmailId()),
+						null);
 			} else {
 				log.info("Password and confirm password doesn't match for users");
-				return new MessageResponse(Status.FAILURE, "Password and confirm password doesn't match for users"
+				return new MessageResponse(Status.FAILURE, "Password and confirm password doesn't match" +
+						" for users", null
 				);
 			}
 		} else {
 			return new MessageResponse(Status.FAILURE,
-					String.format("User is not created! User already exist -> %s", request.getEmailId()));
+					String.format("User is not created! User already exist -> %s", request.getEmailId()), null);
 		}
 	}
 }

@@ -1,5 +1,7 @@
 package io.merch.amazon.controllers;
 
+import io.merch.amazon.models.dto.Status;
+import io.merch.amazon.models.dto.request.UserDeleteRequest;
 import io.merch.amazon.models.dto.request.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
@@ -31,11 +33,24 @@ public class UsersController {
 
 	@GetMapping("/search/contact/{contactNumber}")
 	public ResponseEntity<UserResponse> getUserByContactNumber(@PathVariable String contactNumber) {
-		return new ResponseEntity<>(userService.getUserByEmailId(contactNumber), HttpStatus.FOUND);
+		return new ResponseEntity<>(userService.getUserByContactNumber(contactNumber), HttpStatus.FOUND);
 	}
 
 	@PostMapping("/new")
 	public ResponseEntity<MessageResponse> createNewUser(@RequestBody UserRequest request) {
 		return new ResponseEntity<>(userService.createUser(request), HttpStatus.CREATED);
+	}
+
+	@DeleteMapping("/delete/{identifier}")
+	public ResponseEntity<MessageResponse> deleteUser(@PathVariable String identifier) {
+//		return new ResponseEntity<>(userService.deleteUser(identifier),
+		boolean isUserDeleted = userService.deleteUser(identifier);
+
+		if (isUserDeleted) {
+			return ResponseEntity.ok(new MessageResponse(Status.SUCCESS, "User deleted successfully",
+					null));
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 }

@@ -13,18 +13,18 @@ public class GlobalExceptionHandler {
 	@ExceptionHandler(InvalidArgumentException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public MessageResponse handleInvalidArgumentException(InvalidArgumentException ex, WebRequest request) {
-		return new MessageResponse("FAILURE", ex.getMessage(), request.getDescription(true));
+		return new MessageResponse(Status.FAILURE, ex.getMessage(), request.getDescription(true));
 	}
 
 	@ExceptionHandler(InvalidAgeException.class)
 	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public MessageResponse handleInvalidAgeException(InvalidAgeException ex, WebRequest request) {
-		return new MessageResponse("FAILURE", ex.getMessage(), request.getDescription(true));
+		return new MessageResponse(Status.FAILURE, ex.getMessage(), request.getDescription(true));
 	}
 
 	@ExceptionHandler(NoSuchUserExistException.class)
 	@ResponseStatus(HttpStatus.NOT_FOUND)
 	public MessageResponse handleNoSuchUserExistException(NoSuchUserExistException ex, WebRequest request) {
-		return new MessageResponse("FAILURE", ex.getMessage(), request.getDescription(true));
+		return new MessageResponse(Status.FAILURE, ex.getMessage(), request.getDescription(true));
 	}
 }

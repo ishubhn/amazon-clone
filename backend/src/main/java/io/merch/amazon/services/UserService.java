@@ -18,5 +18,5 @@ public interface UserService {
 
 	MessageResponse createUser(UserRequest request);
 
-	MessageResponse deleteUser(UserDeleteRequest request);
+	boolean deleteUser(String identifier);
 }
