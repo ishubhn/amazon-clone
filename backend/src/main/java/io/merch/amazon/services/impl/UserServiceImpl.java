@@ -5,14 +5,12 @@ import io.merch.amazon.exception.NoSuchUserExistException;
 import io.merch.amazon.models.UsersEntity;
 import io.merch.amazon.models.dto.Status;
 import io.merch.amazon.models.dto.mapper.UserMapper;
-import io.merch.amazon.models.dto.request.UserDeleteRequest;
 import io.merch.amazon.models.dto.request.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
 import io.merch.amazon.repo.UserRepository;
 import io.merch.amazon.services.UserService;
 import lombok.extern.slf4j.Slf4j;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,11 +26,6 @@ import java.util.stream.Collectors;
 public class UserServiceImpl implements UserService {
 	@Autowired
 	private UserRepository userRepo;
-
-	@Autowired
-	private ModelMapper modelMapper;
-
-	static boolean flag = false;
 
 	/*
 	 * @author - Shubham Nagre
@@ -82,7 +75,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<UserResponse> getUsersByFirstNameOrLastName(String name) {
-		return null;
+		return userRepo.findByFirstNameOrLastName(name)
+				.stream()
+				.map(UserMapper::toUsersResponse)
+				.collect(Collectors.toList());
 	}
 
 	@Override
