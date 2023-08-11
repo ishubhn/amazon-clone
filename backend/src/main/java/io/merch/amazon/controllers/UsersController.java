@@ -24,6 +24,16 @@ public class UsersController {
 		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.FOUND);
 	}
 
+	@GetMapping("/search/email/{emailId}")
+	public ResponseEntity<UserResponse> getUserByEmailId(@PathVariable String emailId) {
+		return new ResponseEntity<>(userService.getUserByEmailId(emailId), HttpStatus.FOUND);
+	}
+
+	@GetMapping("/search/contact/{contactNumber}")
+	public ResponseEntity<UserResponse> getUserByContactNumber(@PathVariable String contactNumber) {
+		return new ResponseEntity<>(userService.getUserByEmailId(contactNumber), HttpStatus.FOUND);
+	}
+
 	@PostMapping("/new")
 	public ResponseEntity<MessageResponse> createNewUser(@RequestBody UserRequest request) {
 		return new ResponseEntity<>(userService.createUser(request), HttpStatus.CREATED);

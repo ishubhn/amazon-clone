@@ -1,8 +1,11 @@
 package io.merch.amazon.services.impl;
 
 import io.merch.amazon.exception.InvalidAgeException;
+import io.merch.amazon.exception.InvalidArgumentException;
 import io.merch.amazon.exception.NoSuchUserExistException;
 import io.merch.amazon.models.UsersEntity;
+import io.merch.amazon.models.dto.Status;
+import io.merch.amazon.models.dto.mapper.UserMapper;
 import io.merch.amazon.models.dto.request.UserDeleteRequest;
 import io.merch.amazon.models.dto.request.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
@@ -29,27 +32,49 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private ModelMapper modelMapper;
 
+	/*
+	* @author - Shubham Nagre
+	* @Param - emailId
+	* Fetch user from db using email id
+	* */
 	@Override
 	public UserResponse getUserByEmailId(String emailId) {
 		 Optional<UsersEntity> user = userRepo.findByEmailId(emailId);
 
 		 if (user.isPresent()) {
-			 return modelMapper.map(user, UserResponse.class);
+			 return UserMapper.toUsersResponse(user.get());
 		 } else {
 			 throw new NoSuchUserExistException(String.format("No such user present with email id -> %s", emailId));
 		 }
 	}
 
+	/*
+	 * @author - Shubham Nagre
+	 * @Param - emailId
+	 * Fetch user from db using contact number
+	 * */
 	@Override
 	public UserResponse getUserByContactNumber(String contactNumber) {
-		return null;
+		Optional<UsersEntity> user = userRepo.findByContactNumber(contactNumber);
+
+		if (user.isPresent()) {
+			return UserMapper.toUsersResponse(user.get());
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user present with contact number -> %s",
+					contactNumber));
+		}
 	}
 
+	/*
+	 * @author - Shubham Nagre
+	 * @Param - emailId
+	 * Fetch all users from db
+	 * */
 	@Override
 	public List<UserResponse> getAllUsers() {
 		return userRepo.findAll()
 				.stream()
-				.map(this::convertToResponse)
+				.map(UserMapper::toUsersResponse)
 				.collect(Collectors.toList());
 	}
 
@@ -60,16 +85,28 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public MessageResponse deleteUser(UserDeleteRequest request) {
-		return null;
-	}
+		if (isUserExist(request.getUserEmailId(), request.getContactNumber())) {
+			if (request.getUserEmailId() == null && request.getContactNumber() != null) {
+				Optional<UsersEntity> user = userRepo.findByContactNumber(request.getContactNumber());
+				user.ifPresent(entity -> userRepo.delete(entity));
 
-	private UserResponse convertToResponse(UsersEntity entity) {
-		UserResponse response = modelMapper.map(entity, UserResponse.class);
+				return new MessageResponse(Status.SUCCESS, String.format("User is deleted successfully. Param -> %s",
+						request.getContactNumber()));
+			} else if (request.getUserEmailId() != null && request.getContactNumber() == null) {
+				Optional<UsersEntity> user = userRepo.findByContactNumber(request.getUserEmailId());
+				user.ifPresent(entity -> userRepo.delete(entity));
 
-		return new UserResponse(response.getId(),
-				response.getFirstName(), response.getLastName(), response.getContactNumber(),
-				response.getAlternateContactNumber(), response.getEmailId(), response.getAge(),
-				response.getAddressResponse());
+				return new MessageResponse(Status.SUCCESS, String.format("User is deleted successfully. Param -> %s",
+						request.getUserEmailId()));
+			} else {
+				log.info("Invalid request! Either User Email Id or Contact Number should be present");
+				throw new InvalidArgumentException("Invalid request! Either User Email Id " +
+						"or Contact Number should be present");
+			}
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user exist with either contact number -> '%s' " +
+					"and/or email id -> '%s'", request.getContactNumber(), request.getUserEmailId()));
+		}
 	}
 
 	private boolean isUserExist(String emailId, String contactNumber) {
@@ -84,9 +121,7 @@ public class UserServiceImpl implements UserService {
 		if (contactNumber != null) {
 			Optional<UsersEntity> userByContact = userRepo.findByContactNumber(contactNumber);
 
-			if (userByContact.isPresent()) {
-				return true;
-			}
+			return userByContact.isPresent();
 		}
 
 		return false;
@@ -115,15 +150,15 @@ public class UserServiceImpl implements UserService {
 				userRepo.save(usersEntity);
 
 				log.info("User is created successfully! User email id -> {}", request.getEmailId());
-				return new MessageResponse("SUCCESS",
+				return new MessageResponse(Status.SUCCESS,
 						String.format("User is created successfully! User email id -> %s", request.getEmailId()));
 			} else {
 				log.info("Password and confirm password doesn't match for users");
-				return new MessageResponse("ERROR", "Password and confirm password doesn't match for users"
+				return new MessageResponse(Status.FAILURE, "Password and confirm password doesn't match for users"
 				);
 			}
 		} else {
-			return new MessageResponse("ERROR",
+			return new MessageResponse(Status.FAILURE,
 					String.format("User is not created! User already exist -> %s", request.getEmailId()));
 		}
 	}
