@@ -27,4 +27,13 @@ public class AddressEntity {
 	@JoinColumn(name = "users_id")
 	private UsersEntity usersEntity;
 
+	public AddressEntity(String flatNo, String address, String pinCode, String city, String state, String country) {
+		this.flatNo = flatNo;
+		this.address = address;
+		this.pinCode = pinCode;
+		this.city = city;
+		this.state = state;
+		this.country = country;
+	}
+
 }

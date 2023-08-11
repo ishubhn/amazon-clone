@@ -32,4 +32,16 @@ public class UsersEntity {
 	@ToString.Exclude
 	private List<AddressEntity> addressEntities;
 
+	public UsersEntity(String firstName, String lastName, String contactNumber, String alternateContactNumber,
+	                   String emailId, String password, String confirmPassword,
+	                   LocalDate dateOfBirth) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contactNumber = contactNumber;
+		this.alternateContactNumber = alternateContactNumber;
+		this.emailId = emailId;
+		this.password = password;
+		this.confirmPassword = confirmPassword;
+		this.dateOfBirth = dateOfBirth;
+	}
 }
