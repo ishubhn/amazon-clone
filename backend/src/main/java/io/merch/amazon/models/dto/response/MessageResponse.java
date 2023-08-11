@@ -1,22 +1,26 @@
 package io.merch.amazon.models.dto.response;
 
+import io.merch.amazon.models.dto.Status;
 import lombok.*;
 
 import java.time.LocalDateTime;
 
 @NoArgsConstructor
+@RequiredArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
 @ToString
 public class MessageResponse {
 	private LocalDateTime timestamp;
-	private String status;
-	private String message;
+	@NonNull private Status status;
+	@NonNull private String message;
+	private String additionalMessage;
 
-	public MessageResponse(String status, String message) {
+	public MessageResponse(String status, String message, String additionalMessage) {
 		this.timestamp = LocalDateTime.now();
-		this.status = status;
+		this.status = Status.valueOf(status);
 		this.message = message;
+		this.additionalMessage = additionalMessage;
 	}
 }

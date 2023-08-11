@@ -8,6 +8,6 @@ import lombok.*;
 @Setter
 @ToString
 public class UserDeleteRequest {
-	private String userId;
+	private String userEmailId;
 	private String contactNumber;
 }

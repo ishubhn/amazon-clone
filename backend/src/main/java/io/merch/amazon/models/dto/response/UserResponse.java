@@ -17,6 +17,6 @@ public class UserResponse {
 	private String contactNumber;
 	private String alternateContactNumber;
 	private String emailId;
-	private String age;
+	private int age;
 	private List<AddressResponse> addressResponse;
 }
