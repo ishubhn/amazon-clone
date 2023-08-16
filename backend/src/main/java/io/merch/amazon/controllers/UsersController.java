@@ -1,7 +1,7 @@
 package io.merch.amazon.controllers;
 
 import io.merch.amazon.models.dto.Status;
-import io.merch.amazon.models.dto.request.UserRequest;
+import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
 import io.merch.amazon.services.impl.UserServiceImpl;

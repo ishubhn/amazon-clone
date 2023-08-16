@@ -3,7 +3,6 @@ package io.merch.amazon.models.dto.response;
 import lombok.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Getter
 @Setter
@@ -11,7 +10,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @ToString
 public class UserResponse {
-	private UUID id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String contactNumber;

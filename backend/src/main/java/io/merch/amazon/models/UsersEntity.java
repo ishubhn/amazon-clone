@@ -5,7 +5,6 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
-import java.util.UUID;
 
 @Entity
 @Table(name = "USERS")
@@ -17,8 +16,7 @@ import java.util.UUID;
 public class UsersEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "BINARY(16)")
-	private UUID id;
+	private Long id;
 	private String firstName;
 	private String lastName;
 	private String contactNumber;

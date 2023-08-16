@@ -1,4 +1,4 @@
-package io.merch.amazon.models.dto.request;
+package io.merch.amazon.models.dto.requests;
 
 import lombok.*;
 

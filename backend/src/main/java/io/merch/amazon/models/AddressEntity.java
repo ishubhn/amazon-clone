@@ -3,7 +3,7 @@ package io.merch.amazon.models;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.UUID;
+import java.util.Objects;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -15,8 +15,7 @@ import java.util.UUID;
 public class AddressEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "BINARY(16)")
-	private UUID id;
+	private Long id;
 	private String flatNo;
 	private String address;
 	private String pinCode;
@@ -37,4 +36,21 @@ public class AddressEntity {
 		this.country = country;
 	}
 
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		AddressEntity that = (AddressEntity) o;
+		return Objects.equals(flatNo, that.flatNo) &&
+				Objects.equals(address, that.address) &&
+				Objects.equals(pinCode, that.pinCode) &&
+				Objects.equals(city, that.city) &&
+				Objects.equals(state, that.state) &&
+				Objects.equals(country, that.country);
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id, flatNo, address, pinCode, city, state, country);
+	}
 }

@@ -1,9 +1,8 @@
 package io.merch.amazon.models.dto.mapper;
 
 import io.merch.amazon.models.UsersEntity;
-import io.merch.amazon.models.dto.request.UserRequest;
+import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.UserResponse;
-import lombok.NoArgsConstructor;
 
 public class UserMapper {
 	private UserMapper() {}

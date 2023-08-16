@@ -5,16 +5,15 @@ import io.merch.amazon.exception.NoSuchUserExistException;
 import io.merch.amazon.models.UsersEntity;
 import io.merch.amazon.models.dto.Status;
 import io.merch.amazon.models.dto.mapper.UserMapper;
-import io.merch.amazon.models.dto.request.UserRequest;
+import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
-import io.merch.amazon.repo.UserRepository;
+import io.merch.amazon.repo.UsersRepository;
 import io.merch.amazon.services.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.List;
@@ -24,100 +23,9 @@ import java.util.stream.Collectors;
 @Slf4j
 @Service
 public class UserServiceImpl implements UserService {
+
 	@Autowired
-	private UserRepository userRepo;
-
-	/*
-	 * @author - Shubham Nagre
-	 * @Param - emailId
-	 * Fetch user from db using email id
-	 * */
-	@Override
-	public UserResponse getUserByEmailId(String emailId) {
-		Optional<UsersEntity> user = userRepo.findByEmailId(emailId);
-
-		if (user.isPresent()) {
-			 return UserMapper.toUsersResponse(user.get());
-		 } else {
-			 throw new NoSuchUserExistException(String.format("No such user present with email id -> %s", emailId));
-		 }
-	}
-
-	/*
-	 * @author - Shubham Nagre
-	 * @Param - emailId
-	 * Fetch user from db using contact number
-	 * */
-	@Override
-	public UserResponse getUserByContactNumber(String contactNumber) {
-		Optional<UsersEntity> user = userRepo.findByContactNumber(contactNumber);
-
-		if (user.isPresent()) {
-			return UserMapper.toUsersResponse(user.get());
-		} else {
-			throw new NoSuchUserExistException(String.format("No such user present with contact number -> %s",
-					contactNumber));
-		}
-	}
-
-	/*
-	 * @author - Shubham Nagre
-	 * @Param - emailId
-	 * Fetch all users from db
-	 * */
-	@Override
-	public List<UserResponse> getAllUsers() {
-		return userRepo.findAll()
-				.stream()
-				.map(UserMapper::toUsersResponse)
-				.collect(Collectors.toList());
-	}
-
-	@Override
-	public List<UserResponse> getUsersByFirstNameOrLastName(String name) {
-		return userRepo.findByFirstNameOrLastName(name)
-				.stream()
-				.map(UserMapper::toUsersResponse)
-				.collect(Collectors.toList());
-	}
-
-	@Override
-	@Transactional
-	public boolean deleteUser(String identifier) {
-		Optional<UsersEntity> user;
-
-		if (identifier.contains("@")) {
-			user = userRepo.findByEmailId(identifier);
-		} else {
-			user = userRepo.findByContactNumber(identifier);
-		}
-
-		if (user.isPresent()) {
-			userRepo.delete(user.get());
-			log.info("user is deleted successfully! (identifier -> {})", identifier);
-			return true;
-		} else {
-			throw new NoSuchUserExistException(String.format("No such user exist in the system with identifier -> %s", identifier));
-		}
-	}
-
-	private boolean isUserExist(String emailId, String contactNumber) {
-		if (emailId != null) {
-			Optional<UsersEntity> userByEmail = userRepo.findByEmailId(emailId);
-
-			if (userByEmail.isPresent()) {
-				return true;
-			}
-		}
-
-		if (contactNumber != null) {
-			Optional<UsersEntity> userByContact = userRepo.findByContactNumber(contactNumber);
-
-			return userByContact.isPresent();
-		}
-
-		return false;
-	}
+	private UsersRepository usersRepo;
 
 	public static int calculateAge(LocalDate birthDate) {
 		LocalDate currentDate = LocalDate.now();
@@ -127,6 +35,43 @@ public class UserServiceImpl implements UserService {
 		} else {
 			throw new InvalidAgeException("An error occurred while calculating age for the user.");
 		}
+	}
+
+	/*
+	 * @Author - Shubham Nagre
+	 * @Param - emailId
+	 * Fetch user from db using email id
+	 * */
+	@Override
+	public UserResponse getUserByEmailId(String emailId) {
+		Optional<UsersEntity> user = usersRepo.findByEmailId(emailId);
+
+		if (user.isPresent()) {
+			return UserMapper.toUsersResponse(user.get());
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user present with email id -> %s", emailId));
+		}
+	}
+
+	@Override
+	public UserResponse getUserByContactNumber(String contactNumber) {
+		return null;
+	}
+
+	@Override
+	public List<UserResponse> getAllUsers() {
+		return usersRepo.findAll()
+				.stream()
+				.map(UserMapper::toUsersResponse)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<UserResponse> getUsersByFirstNameOrLastName(String name) {
+		return usersRepo.findByFirstNameOrLastName(name)
+				.stream()
+				.map(UserMapper::toUsersResponse)
+				.collect(Collectors.toList());
 	}
 
 	@Override
@@ -139,7 +84,7 @@ public class UserServiceImpl implements UserService {
 			if (request.getPassword().equals(request.getConfirmPassword())) {
 				UsersEntity usersEntity = UserMapper.toUsersEntity(request);
 				usersEntity.setAge(calculateAge(request.getDateOfBirth()));
-				userRepo.save(usersEntity);
+				usersRepo.save(usersEntity);
 
 				log.info("User is created successfully! User email id -> {}", request.getEmailId());
 				return new MessageResponse(Status.SUCCESS,
@@ -155,5 +100,59 @@ public class UserServiceImpl implements UserService {
 			return new MessageResponse(Status.FAILURE,
 					String.format("User is not created! User already exist -> %s", request.getEmailId()), null);
 		}
+	}
+
+	@Override
+//	@Transactional
+	public Boolean deleteUser(String identifier) {
+		Optional<UsersEntity> user;
+
+		if (identifier.contains("@")) {
+			user = usersRepo.findByEmailId(identifier);
+		} else {
+			user = usersRepo.findByContactNumber(identifier);
+		}
+
+		if (user.isPresent()) {
+			usersRepo.deleteById(user.get().getId());
+			log.info("user is deleted successfully! (identifier -> {})", identifier);
+			return true;
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user exist in the system with identifier -> %s", identifier));
+		}
+	}
+
+	private boolean isUserExist(String identifier) {
+		if (identifier.contains("@")) {
+			Optional<UsersEntity> userByEmail = usersRepo.findByEmailId(identifier);
+
+			if (userByEmail.isPresent()) {
+				return true;
+			}
+		} else if (!identifier.isEmpty()) {
+			Optional<UsersEntity> userByContact = usersRepo.findByContactNumber(identifier);
+
+			return userByContact.isPresent();
+		}
+
+		return false;
+	}
+
+	private boolean isUserExist(String emailId, String contactNumber) {
+		if (emailId != null) {
+			Optional<UsersEntity> userByEmail = usersRepo.findByEmailId(emailId);
+
+			if (userByEmail.isPresent()) {
+				return true;
+			}
+		}
+
+		if (contactNumber != null) {
+			Optional<UsersEntity> userByContact = usersRepo.findByContactNumber(contactNumber);
+
+			return userByContact.isPresent();
+		}
+
+		return false;
 	}
 }

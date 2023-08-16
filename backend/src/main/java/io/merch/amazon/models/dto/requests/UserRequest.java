@@ -1,4 +1,4 @@
-package io.merch.amazon.models.dto.request;
+package io.merch.amazon.models.dto.requests;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -34,8 +34,8 @@ public class UserRequest {
 		// convert string to date
 		String[] token = dateOfBirth.split("-");
 		this.dateOfBirth = LocalDate.of(Integer.parseInt(token[0]),
-								Integer.parseInt(token[1]),
-								Integer.parseInt(token[2]));
+				Integer.parseInt(token[1]),
+				Integer.parseInt(token[2]));
 	}
 
 
