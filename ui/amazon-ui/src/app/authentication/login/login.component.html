@@ -1,0 +1,100 @@
+<div class="container p-4">
+  <div class="center">
+    <!-- logo -->
+    <div class="row">
+      <div class="col align-self-center">
+        <img [src]="logoPath" alt="amazon logo" width="103px" height="31px" />
+        .in
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="outer-box col mt-3 mb-4">
+        <div class="align-self-center">
+          <p class="header mb-2">Sign in</p>
+
+          <!-- Form group -->
+          <form
+            #loginForm="ngForm"
+            (onSubmit)="onSubmit(loginForm)"
+            name="loginForm"
+          >
+            <!-- Block 1 -->
+            <div class="userId" *ngIf="!isFormSubmitted">
+              <label for="inputEmailContact" class="fw-bolder label">
+                Email or mobile phone number
+              </label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="inputEmailContact"
+                name="username"
+                [(ngModel)]="user.userId"
+                aria-describedby="emailHelp"
+              />
+              <!-- Continue Button -->
+              <button
+                type="button"
+                class="btn btn-warning btn-block btn-sm btn-continue my-2 rounded-3"
+                (click)="onContinue()"
+              >
+                Continue
+              </button>
+
+              <!-- T&C -->
+              <p class="terms-block">
+                By continuing, you agree to Amazon's
+                <a href="#">Conditions of Use</a> and
+                <a href="#">Privacy Notice</a>.
+              </p>
+
+              <!-- help block -->
+              <div class="small mb-3" *ngIf="!isFormSubmitted">
+                <fa-icon
+                  class="d-inline"
+                  [icon]="faCaretRight"
+                  *ngIf="isHelpClicked === false"
+                ></fa-icon>
+                <fa-icon
+                  class="d-inline"
+                  [icon]="faCaretDown"
+                  *ngIf="isHelpClicked"
+                ></fa-icon>
+
+                <div class="d-inline help-parent" (click)="onClickCaret()">
+                  Need help?<br />
+                  <div class="help" *ngIf="isHelpClicked">
+                    <span id="help-2">Forgot Password</span><br />
+                    <span id="help-3">Other issues with Sign-in</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Block 2 -->
+          </form>
+        </div>
+      </div>
+      <!-- hr -->
+      <div class="row">
+        <div class="col sign-up-block">
+          <hr width="300rem" data-content />
+          <div class="small">New to Amazon?</div>
+          <!-- Sign Up -->
+          <div class="row" *ngIf="!isFormSubmitted">
+            <button
+              type="submit"
+              class="btn btn-outline-dark btn-sm btn-block mt-3 mb-4 sign-up-btn"
+            >
+              Create your Amazon account
+            </button>
+          </div>
+        </div>
+      </div>
+      <hr id="hz-rule" />
+      <!-- Footer -->
+      <footer class="p-4">
+        <p class="small">&copy; 2023, Shubham Nagre</p>
+      </footer>
+    </div>
+  </div>
+</div>
