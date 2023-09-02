@@ -1,5 +1,6 @@
-a {
-  text-decoration: none;
+:root {
+  --amazon-blue: #0066c0;
+  --amazon-yellow: #c45500;
 }
 
 footer {
@@ -21,6 +22,16 @@ footer {
   width: 30%;
 }
 
+.change {
+  color: #0066c0;
+}
+
+.change:hover {
+  color: #c45500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .container {
   display: flex;
   align-items: center;
@@ -31,6 +42,17 @@ footer {
   height: 100%;
 }
 
+#forgot-password {
+  color: #0066c0;
+  font-size: .8125rem;;
+}
+
+#forgot-password:hover {
+  color: #c45500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
 .header {
   font-weight: 600;
   font-size: 1.75rem;
@@ -38,30 +60,38 @@ footer {
 }
 
 .help {
-  padding-left: 0.7rem;
+  padding-left: .7rem;
 }
 
 .help-parent {
-  font-size: 0.8125rem;
+  font-size: .8125rem;
   cursor: pointer;
   color: #0066c0;
 }
 
-#help-1:hover {
+/* #help-1:hover {
   text-decoration: underline;
-}
+  color: #c45500;
+} */
 
 #help-2:hover {
   text-decoration: underline;
+  color: #c45500;
 }
 
 #help-3:hover {
   text-decoration: underline;
+  color: #c45500;
 }
 
 #hz-rule {
   margin-bottom: 0;
   box-shadow: 0 20px 20px -20px var(--bs-tertiary-bg);
+}
+
+.icon-info {
+  color: #0066c0;
+  /* transform: rotate(14deg); */
 }
 
 .label {
@@ -75,7 +105,7 @@ footer {
 }
 
 .outer-box {
-  border: 0.5px solid rgb(146, 146, 146);
+  border: .5008px solid rgb(146, 146, 146);
   border-radius: 10px;
   display: block;
   height: 100%;
@@ -97,6 +127,33 @@ footer {
 }
 
 .terms-block {
-  font-size: 0.75rem;
+  font-size: .75rem;
   font-weight: 400;
 }
+
+.term-1 {
+  text-decoration: none;
+  color: #0066c0;
+}
+
+.term-1:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.term-2 {
+  text-decoration: none;
+  color: #0066c0;
+}
+
+.term-2:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.userId-details {
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+

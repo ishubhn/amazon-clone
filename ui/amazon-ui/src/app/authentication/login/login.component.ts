@@ -4,7 +4,7 @@ import { NgForm } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
-import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
+import { faCaretDown, faCaretRight, faInfo } from '@fortawesome/free-solid-svg-icons';
 import { LoginUser } from 'src/app/interface/login-user';
 import { AuthService } from 'src/app/service/auth.service';
 
@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   logoPath: string = 'assets/amazon-logo-light.png';
   faCaretDown = faCaretDown;
   faCaretRight = faCaretRight;
+  faInfo = faInfo;
   isFormSubmitted: boolean = false;
   isHelpClicked: boolean = false;
 
