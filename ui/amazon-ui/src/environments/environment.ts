@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  restServiceURL: "http://localhost:8081/auth"
+  restServiceURL: "http://localhost:8081/v1/users"
 };
 
 /*

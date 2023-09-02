@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 
 import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { LoginUser } from 'src/app/interface/login-user';
+import { AuthService } from 'src/app/service/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private title: Title,
     private router: Router,
-    private httpC: HttpClient
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -30,9 +31,6 @@ export class LoginComponent implements OnInit {
   isFormSubmitted: boolean = false;
   isHelpClicked: boolean = false;
 
-  // @V
-  // loginForm: any;
-
   user: LoginUser = {
     userId: '',
     password: '',
@@ -41,19 +39,28 @@ export class LoginComponent implements OnInit {
   // Functions
   onContinue() {
     this.isFormSubmitted = true;
+    console.log(this.user.userId);
   }
 
   onEditUserId() {
     this.isFormSubmitted = false;
   }
 
-  onSubmit(form: NgForm) {
-    this.user.userId = form.value.userId;
-    this.user.password = form.value.password;
-    console.log(this.user);
-  }
-
   onClickCaret() {
     this.isHelpClicked = !this.isHelpClicked;
+  }
+
+  onSubmit(form: NgForm) {
+    console.log("login process");
+    console.log(this.user);
+
+    this.authService.loginUser(this.user).subscribe(
+      (res) => {
+        console.log(`Login successful for user: ${this.user.userId}`);
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
   }
 }
