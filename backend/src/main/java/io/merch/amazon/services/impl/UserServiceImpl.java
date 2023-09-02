@@ -1,10 +1,12 @@
 package io.merch.amazon.services.impl;
 
 import io.merch.amazon.exception.InvalidAgeException;
+import io.merch.amazon.exception.InvalidCredentialsException;
 import io.merch.amazon.exception.NoSuchUserExistException;
 import io.merch.amazon.models.UsersEntity;
 import io.merch.amazon.models.dto.Status;
 import io.merch.amazon.models.dto.mapper.UserMapper;
+import io.merch.amazon.models.dto.requests.LoginUserRequest;
 import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
@@ -119,6 +121,30 @@ public class UserServiceImpl implements UserService {
 			return true;
 		} else {
 			throw new NoSuchUserExistException(String.format("No such user exist in the system with identifier -> %s", identifier));
+		}
+	}
+
+	@Override
+	public Boolean loginUser(LoginUserRequest loginUser) {
+		Optional<UsersEntity> user;
+
+		if (loginUser.getIdentifier().contains("@")) {
+			user = usersRepo.findByEmailId(loginUser.getIdentifier());
+		} else {
+			user = usersRepo.findByContactNumber(loginUser.getIdentifier());
+		}
+
+		if (user.isPresent()) {
+			if (user.get().getPassword().equals(loginUser.getPassword())) {
+				log.info("User is logged in successfully");
+				return true;
+			} else {
+				log.error("Either credentials or username is incorrect.");
+				throw new InvalidCredentialsException("Either credentials or username is incorrect");
+			}
+		} else {
+			throw new NoSuchUserExistException(String.format("No such user exist with identifier -> %s",
+					loginUser.getIdentifier()));
 		}
 	}
 

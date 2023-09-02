@@ -1,6 +1,7 @@
 package io.merch.amazon.controllers;
 
 import io.merch.amazon.models.dto.Status;
+import io.merch.amazon.models.dto.requests.LoginUserRequest;
 import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
@@ -15,7 +16,7 @@ import java.util.List;
 
 @Slf4j
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/v1/users")
 public class UsersController {
 	@Autowired
 	private UserServiceImpl userService;
@@ -55,5 +56,10 @@ public class UsersController {
 		} else {
 			return ResponseEntity.notFound().build();
 		}
+	}
+
+	@PostMapping("/auth/login")
+	public ResponseEntity<Boolean> loginUser(@RequestBody LoginUserRequest loginUser) {
+		return new ResponseEntity<>(userService.loginUser(loginUser), HttpStatus.OK);
 	}
 }

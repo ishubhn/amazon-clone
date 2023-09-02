@@ -1,5 +1,6 @@
 package io.merch.amazon.services;
 
+import io.merch.amazon.models.dto.requests.LoginUserRequest;
 import io.merch.amazon.models.dto.requests.UserRequest;
 import io.merch.amazon.models.dto.response.MessageResponse;
 import io.merch.amazon.models.dto.response.UserResponse;
@@ -15,4 +16,6 @@ public interface UserService {
 	MessageResponse createUser(UserRequest request);
 
 	Boolean deleteUser(String identifier);
+
+	Boolean loginUser(LoginUserRequest loginUser);
 }
