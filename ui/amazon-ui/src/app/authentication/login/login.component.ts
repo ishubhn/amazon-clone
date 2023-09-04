@@ -61,6 +61,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         console.log("User logged in successfully");
         console.log(this.user);
+        // this.router.navigateByUrl()
       },
       err => {
 				console.error("Invalid Credentials");

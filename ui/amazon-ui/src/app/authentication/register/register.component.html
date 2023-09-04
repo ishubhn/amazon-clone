@@ -1,0 +1,146 @@
+<div class="container p-3 pb-0">
+  <div class="center">
+    <!-- logo -->
+    <div class="row">
+      <div class="col align-self-center logo">
+        <img [src]="logoPath" alt="amazon logo" width="103px" height="31px" />
+        .in
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="outer-box col mt-3 mb-3 py-2 px-4">
+        <div class="align-self-center">
+          <p class="header mb-2">Create Account</p>
+
+          <!-- Form group -->
+          <form
+            #signUpForm="ngForm"
+            (onSubmit)="onSubmit(signUpForm)"
+            name="loginForm"
+          >
+            <!-- Name -->
+            <div class="userId col-12">
+              <label for="inputName" class="fw-bolder label">Your Name</label>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="inputName"
+                name="username"
+                [(ngModel)]="userName.name"
+                placeholder="First and last name"
+                aria-describedby="Name"
+                autofocus
+              />
+            </div>
+            <!-- contact -->
+            <div class="contact">
+              <label for="contact" class="fw-bolder label pt-3"
+                >Mobile Number</label
+              >
+              <div>
+                <!-- <span class="">IN +91</span> -->
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  id="contact"
+                  name="contact"
+                  placeholder="Mobile number"
+                  [(ngModel)]="user.contactNumber"
+                  aria-describedby="contact"
+                />
+              </div>
+            </div>
+            <!-- email -->
+            <div>
+              <label for="email" class="fw-bolder label pt-3"
+                >Email (optional)</label
+              ><br />
+              <input
+                type="email"
+                class="form-control form-control-sm"
+                id="email"
+                name="email"
+                [(ngModel)]="user.emailId"
+                aria-describedby="email"
+              />
+            </div>
+            <!--  -->
+            <div>
+              <label for="password" class="fw-bolder label pt-3">Password</label
+              ><br />
+              <input
+                type="password"
+                class="form-control form-control-sm"
+                id="password"
+                name="password"
+                [(ngModel)]="user.password"
+                placeholder="At least 6 characters"
+                aria-describedby="email"
+              />
+            </div>
+            <p class="text-start text-secondary note" *ngIf="isFormSubmitted">
+              <span
+                ><fa-icon
+                  class="d-inline icon-info pe-2"
+                  [icon]="faInfo"
+                  size="2xs"
+                ></fa-icon></span
+              ><span class="note">Passwords must be at least 6 characters.</span>
+            </p>
+            <p class="small note">
+              To verify your number, we will send you a text message with a
+              temporary code. Message and data rates may apply.
+            </p>
+            <!-- Continue Btn -->
+            <button
+              type="button"
+              class="btn btn-warning btn-block btn-sm btn-continue mt-2 my-2 rounded-3"
+            >
+              Continue
+            </button>
+
+            <!-- help -->
+            <div class="help-block">
+              <!-- hr -->
+              <hr width="100%" />
+              <p>
+                Already have an account? <span class="help-link pe-1">Sign in</span>
+                <span
+                  ><fa-icon
+                    class="d-inline icon-info pe-2"
+                    [icon]="faCaretRight"
+                    size="2xs"
+                  ></fa-icon
+                ></span>
+                <br>
+                Buying for work? <span class="help-link pe-1">Create a free business account</span>
+                <span
+                  ><fa-icon
+                    class="d-inline icon-info pe-2"
+                    [icon]="faCaretRight"
+                    size="2xs"
+                  ></fa-icon
+                ></span>
+              </p>
+            </div>
+
+            <!-- T&C -->
+            <p class="terms-block">
+              By creating an account or logging in, you agree to Amazon’s
+              <a class="term-1" href="#">Conditions of Use</a> and
+              <a class="term-2" href="#">Privacy Notice</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Footer -->
+<div class="footer">
+  <hr id="hz-rule" class="mb-0" />
+  <footer class="mb-0 p-3">
+    <p class="small">&copy; 2023, Shubham Nagre</p>
+  </footer>
+</div>
