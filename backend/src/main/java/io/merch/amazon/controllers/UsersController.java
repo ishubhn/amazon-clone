@@ -17,6 +17,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/v1/users")
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 	@Autowired
 	private UserServiceImpl userService;
@@ -60,6 +61,7 @@ public class UsersController {
 
 	@PostMapping("/auth/login")
 	public ResponseEntity<Boolean> loginUser(@RequestBody LoginUserRequest loginUser) {
+		log.info(loginUser.toString());
 		return new ResponseEntity<>(userService.loginUser(loginUser), HttpStatus.OK);
 	}
 }
