@@ -1,0 +1,14 @@
+footer {
+  background-color: var(--bs-tertiary-bg);
+  text-align: center;
+  background-blend-mode: soft-light;
+}
+
+.footer {
+  height: 100%;
+}
+
+#hz-rule {
+  margin-bottom: 0;
+  box-shadow: 0 20px 20px -20px var(--bs-tertiary-bg);
+}
