@@ -1,0 +1,63 @@
+<div class="container p-3 pb-0">
+  <div class="center">
+    <!-- logo -->
+    <div class="row">
+      <div class="col align-self-center logo">
+        <img [src]="logoPath" alt="amazon logo" width="103px" height="31px" />
+        .in
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="outer-box col mt-3 mb-3 py-3 px-3">
+        <div class="align-self-center">
+          <p class="header mb-2">Verify mobile number</p>
+
+          <!-- Form group -->
+          <form
+            #signUpForm="ngForm"
+            (onSubmit)="onSubmit(signUpForm)"
+            name="loginForm"
+          >
+            <p class="label-2">
+              A text with a One Time Password (OTP) has been sent to your mobile
+              number: <span class="contact">{{ userContactNumber }}</span>
+              <span class="change-link" (Click)="onClickChange()">Change</span>
+            </p>
+            <!-- email -->
+            <div>
+              <div class="d-flex">
+                <div class="ps-0 p-2 label-3">Enter OTP:</div>
+                <div class="ms-auto p-2 resend-otp">Resend OTP</div>
+              </div>
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                id="otp"
+                name="otp"
+                minlength="6"
+                maxlength="6"
+                [(ngModel)]="otp"
+                aria-describedby="otp"
+              />
+            </div>
+            <!-- New Account Btn -->
+            <button
+              type="button"
+              class="btn btn-warning btn-block btn-sm btn-continue mt-3 my-2 rounded-3"
+            >
+              Create your Amazon account
+            </button>
+            <!-- T&C -->
+            <p class="terms-block pt-4">
+              By creating an account or logging in, you agree to Amazon’s
+              <a class="term-1" href="#">Conditions of Use</a> and
+              <a class="term-2" href="#">Privacy Notice</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

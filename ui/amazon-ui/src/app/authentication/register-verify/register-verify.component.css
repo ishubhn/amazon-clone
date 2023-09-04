@@ -1,0 +1,121 @@
+:root {
+  --amazon-blue: #0066c0;
+  --amazon-yellow: #c45500;
+}
+
+footer {
+  background-color: var(--bs-tertiary-bg);
+  text-align: center;
+  background-blend-mode: soft-light;
+}
+
+input::placeholder {
+  font-weight: 500;
+}
+
+.btn-continue {
+  width: 100%;
+}
+
+.center {
+  width: 30%;
+}
+
+.change-link {
+  color: #0066c0;
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+.change-link:hover {
+  color: #c45500;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #111111;
+}
+
+.contact {
+  font-weight: 700;
+}
+
+.header {
+  font-weight: 600;
+  font-size: 1.75rem;
+  margin-bottom: 0;
+}
+
+.label {
+  font-size: .8125rem;
+  font-weight: 700;
+}
+
+.label-2 {
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+.label-3 {
+  font-size: .8125rem;
+  font-weight: 700;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.note {
+  font-size: 0.8125rem;
+  font-weight: 500;
+}
+
+.outer-box {
+  border: .5008px solid rgb(146, 146, 146);
+  border-radius: 10px;
+  display: block;
+  height: 100%;
+  width: 30%;
+}
+
+.resend-otp {
+  color: #0066c0;
+  font-size: .8125rem;
+  font-weight: 600;
+}
+
+.resend-otp:hover {
+  color: #c45500;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.terms-block {
+  font-size: .75rem;
+  font-weight: 500;
+}
+
+.term-1 {
+  text-decoration: none;
+  color: #0066c0;
+}
+
+.term-1:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
+
+.term-2 {
+  text-decoration: none;
+  color: #0066c0;
+}
+
+.term-2:hover {
+  text-decoration: underline;
+  color: #c45500;
+}
