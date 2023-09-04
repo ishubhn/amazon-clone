@@ -29,7 +29,7 @@
                 class="form-control form-control-sm"
                 id="inputEmailContact"
                 name="username"
-                [(ngModel)]="user.userId"
+                [(ngModel)]="user.identifier"
                 aria-describedby="emailHelp"
                 autofocus
               />
@@ -76,7 +76,7 @@
             <div class="userId" *ngIf="isFormSubmitted">
               <div class="userId-details">
                 <p class="d-inline">
-                  {{ user.userId }}
+                  {{ user.identifier }}
                 </p>
                 <p class="d-inline change" (click)="onEditUserId()">Change</p>
               </div>

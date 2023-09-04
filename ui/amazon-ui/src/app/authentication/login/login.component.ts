@@ -31,16 +31,17 @@ export class LoginComponent implements OnInit {
   faInfo = faInfo;
   isFormSubmitted: boolean = false;
   isHelpClicked: boolean = false;
+  isUserLoginSuccess: boolean = true;
 
   user: LoginUser = {
-    userId: '',
+    identifier: '',
     password: '',
   };
 
   // Functions
   onContinue() {
     this.isFormSubmitted = true;
-    console.log(this.user.userId);
+    console.log(this.user.identifier);
   }
 
   onEditUserId() {
@@ -52,16 +53,22 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log("login process");
-    console.log(this.user);
+    console.log("login process started");
+    // console.log(this.user);
 
     this.authService.loginUser(this.user).subscribe(
-      (res) => {
-        console.log(`Login successful for user: ${this.user.userId}`);
+      res => {
+        console.log(res);
+        console.log("User logged in successfully");
+        console.log(this.user);
       },
-      (err) => {
-        console.error(err);
+      err => {
+				console.error("Invalid Credentials");
+        console.log(this.user);
+				console.log(err.error.message);
+				this.isUserLoginSuccess = false;
       }
-    )
+    );
+    // this.form.reset();
   }
 }

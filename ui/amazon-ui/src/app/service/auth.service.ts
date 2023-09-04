@@ -11,13 +11,11 @@ export class AuthService {
   constructor(private httpc: HttpClient) {}
 
   loginUser = (user: LoginUser) => {
+    console.log("inside service");
+
+    console.log(user);
+
     return this.httpc
-      .post<boolean>(`${environment.restServiceURL}/auth/login`, user)
-      .pipe(
-        map((user) => {
-          localStorage.setItem('user', JSON.stringify(user));
-          return user;
-        })
-      );
+      .post<boolean>(`${environment.restServiceURL}/auth/login`, user);
   };
 }
