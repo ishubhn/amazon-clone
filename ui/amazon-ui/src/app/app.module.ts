@@ -6,8 +6,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AuthenticationModule } from './authentication/authentication.module';
-import { AuthenticationRoutingModule } from './authentication/authentication-routing.module.ts.module';
+import { AuthenticationRoutingModule } from './authentication/authentication-routing.module';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DashboardModule } from './dashboard/dashboard.module';
+import { DashboardRoutingModule } from './dashboard/dashboard-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,6 +18,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     AppRoutingModule,
     AuthenticationModule,
     AuthenticationRoutingModule,
+    DashboardModule,
+    DashboardRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
   ],
