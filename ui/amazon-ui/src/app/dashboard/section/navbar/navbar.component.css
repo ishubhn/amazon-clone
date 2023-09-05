@@ -4,18 +4,15 @@ input {
 
 input::placeholder {
   color: rgb(108, 108, 108);
-  /* font-weight: 400; */
 }
+
+
 
 .categories {
   width: 4.0625rem;
   font-size: 0.75rem;
   border-radius: 0;
 }
-
-/* .categories option {
-  width: 120px !important;
-} */
 
 .container-fluid {
   color: #fff !important;
@@ -29,11 +26,10 @@ input::placeholder {
   background-color: #0f1111 !important;
 }
 
-/* .nav-item:hover {
-  border: #fff;
-  /* border-color: aliceblue; /
+.text {
+  font-size: .875rem;
+  line-height: .875rem;
 }
-*/
 
 #searchBtn {
   background-color: #FEBD69;

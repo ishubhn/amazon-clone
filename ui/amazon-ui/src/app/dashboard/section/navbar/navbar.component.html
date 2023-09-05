@@ -19,16 +19,27 @@
     <div class="nav-fill w-100" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <!-- Delivery location -->
-        <li class="nav-item ms-4">
-          <fa-icon class="d-inline fa-lg" [icon]="faLocationDot"></fa-icon>
-          <p class="address-block d-inline text-start" *ngIf="!isLoginSuccess">
-            <span class="small"
+        <li class="nav-item ms-3">
+          <!-- <p class="d-inline text-start" style="line-height: 0 !important;" *ngIf="!isLoginSuccess"> -->
+          <a class="nav-link text-light text-start navbar-text text" *ngIf="!isLoginSuccess">
+            <span class="small ps-3"
               >Delivering to {{ address.city }} {{ address.pinCode }} </span
-            ><br /><strong>Sign in to update your location</strong>
-          </p>
-          <p class="address-block" *ngIf="isLoginSuccess">
+            ><br /><strong
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
+                <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
+                <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+              </svg>Sign in to update your location</strong
+            >
+          </a>
+          <p
+            class="address-block d-inline text text-start"
+            *ngIf="isLoginSuccess"
+          >
             <span class="small">Deliver to {{ user.firstName }} </span><br />
-            <strong>{{ address.city }} {{ address.pinCode }}</strong>
+            <strong
+              ><fa-icon class="d-inline fa-lg" [icon]="faLocationDot"></fa-icon
+              >{{ address.city }} {{ address.pinCode }}</strong
+            >
           </p>
         </li>
         <!-- Form for Search Bar -->
@@ -48,7 +59,7 @@
               <option value="books">Books</option>
             </select>
             <input
-              class="form-control rounded-0"
+              class="form-control rounded-0 w-auto"
               type="search"
               placeholder="Search Amazon.in"
               aria-label="Search"
@@ -65,7 +76,7 @@
         <!-- Region and Language -->
         <li class="nav-item language dropdown ms-4">
           <a
-            class="nav-link dropdown-toggle"
+            class="nav-link dropdown-toggle navbar-text text"
             href="#"
             role="button"
             data-bs-toggle="dropdown"
@@ -81,22 +92,25 @@
         </li>
         <!-- Account -->
         <li class="nav-item ms-4">
-          <a class="nav-link text-light text-start"
-            ><span>Hello, sign in</span><br /><strong
-              >Account & Lists</strong
-            ></a
-          >
+          <a class="nav-link text-light text-start navbar-text text">
+            <span>Hello, sign in</span><br /><strong>Account & Lists</strong>
+          </a>
         </li>
         <!-- Returns -->
         <li class="nav-item ms-4">
-          <a class="nav-link text-light text-start"
+          <a class="nav-link text-light text-start navbar-text text"
             ><span>Returns</span><br /><strong>&amp; Orders</strong></a
           >
         </li>
         <!-- Cart -->
         <li class="nav-item ms-4">
-          <a class="nav-link text-light"
-            ><fa-icon class="d-inline fa-2xl" [icon]="faCart"></fa-icon>Cart</a
+          <a class="nav-link text-light navbar-text text"
+            >
+            <!-- <fa-icon class="d-inline fa-2xl" [icon]="faCart"></fa-icon> -->
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+              <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+            </svg>
+            Cart</a
           >
         </li>
       </ul>
