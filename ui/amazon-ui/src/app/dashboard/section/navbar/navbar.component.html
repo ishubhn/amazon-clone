@@ -1,23 +1,69 @@
 <nav
-  class="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top nav-bg-content p-4 ps-2"
+  class="navbar navbar-expand-lg fixed-top nav-bg-content"
   data-bs-theme="dark"
 >
   <div class="container-fluid">
-    <!-- <a class="navbar-brand" href="#">Navbar</a> -->
-    <div>
-      <img [src]="logoPath" alt="amazon logo" width="126px" height="36px" />
-      <span id="domain">.in</span>
+    <!-- amazon logo dark -->
+    <div class="d-flex">
+      <img class="d-inline" [src]="logoPath" alt="amazon logo" width="100px" />
+      <span id="domain" class="d-inline">.in</span>
     </div>
 
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+    <!--
+      mx-auto - to align items to the center of the navbar
+      ms-auto -  aligns items to the right of the navbar
+      me-auto - aligns items to the left
+      nav-fill & w-100 - with auto spacing
+     -->
+
+    <div class="nav-fill w-100" id="navbarSupportedContent">
+      <ul class="navbar-nav">
+        <!-- Delivery location -->
+        <li class="nav-item ms-4">
+          <fa-icon class="d-inline fa-lg" [icon]="faLocationDot"></fa-icon>
+          <p class="address-block d-inline text-start" *ngIf="!isLoginSuccess">
+            <span class="small"
+              >Delivering to {{ address.city }} {{ address.pinCode }} </span
+            ><br /><strong>Sign in to update your location</strong>
+          </p>
+          <p class="address-block" *ngIf="isLoginSuccess">
+            <span class="small">Deliver to {{ user.firstName }} </span><br />
+            <strong>{{ address.city }} {{ address.pinCode }}</strong>
+          </p>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
+        <!-- Form for Search Bar -->
+        <li class="nav-item ms-4">
+          <!-- <a class="nav-link" href="#">Link</a> -->
+          <!-- Form group -->
+          <form class="d-flex" role="search">
+            <!-- Categories Button Select -->
+            <select
+              class="form-select categories rounded-start"
+              id="floatingSelect"
+            >
+              <option selected>All</option>
+              <option value="alexa skills">Alexa Skills</option>
+              <option value="appliances">Appliances</option>
+              <option value="electronics">Electronics</option>
+              <option value="books">Books</option>
+            </select>
+            <input
+              class="form-control rounded-0"
+              type="search"
+              placeholder="Search Amazon.in"
+              aria-label="Search"
+            />
+            <button
+              class="btn btn-warning rounded-end"
+              id="searchBtn"
+              type="submit"
+            >
+              <fa-icon class="d-inline fa-lg" [icon]="faSearch"></fa-icon>
+            </button>
+          </form>
         </li>
-        <li class="nav-item dropdown">
+        <!-- Region and Language -->
+        <li class="nav-item language dropdown ms-4">
           <a
             class="nav-link dropdown-toggle"
             href="#"
@@ -25,28 +71,35 @@
             data-bs-toggle="dropdown"
             aria-expanded="false"
           >
-            Dropdown
+            <img [src]="inFlagLogoPath" alt="flag indian" width="24px" />EN
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
+            <li><a class="dropdown-item" href="#">English</a></li>
+            <li><a class="dropdown-item" href="#">Hindi</a></li>
+            <li><a class="dropdown-item" href="#">Marathi</a></li>
           </ul>
         </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+        <!-- Account -->
+        <li class="nav-item ms-4">
+          <a class="nav-link text-light text-start"
+            ><span>Hello, sign in</span><br /><strong
+              >Account & Lists</strong
+            ></a
+          >
+        </li>
+        <!-- Returns -->
+        <li class="nav-item ms-4">
+          <a class="nav-link text-light text-start"
+            ><span>Returns</span><br /><strong>&amp; Orders</strong></a
+          >
+        </li>
+        <!-- Cart -->
+        <li class="nav-item ms-4">
+          <a class="nav-link text-light"
+            ><fa-icon class="d-inline fa-2xl" [icon]="faCart"></fa-icon>Cart</a
+          >
         </li>
       </ul>
-      <form class="d-flex" role="search">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div> -->
+    </div>
   </div>
 </nav>
