@@ -1,0 +1,14 @@
+li {
+  color: #fff;
+}
+
+/* Classes and Ids styles */
+.navbar {
+  background-color: #232f3e;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.text {
+  font-size: .875rem;
+}

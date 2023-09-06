@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-navbar-bottom',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar-bottom.component.css']
 })
 export class NavbarBottomComponent {
-
+  faCaretDown = faCaretDown;
 }

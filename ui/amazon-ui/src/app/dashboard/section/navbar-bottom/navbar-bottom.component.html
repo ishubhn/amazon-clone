@@ -1,1 +1,74 @@
-<p>navbar-bottom works!</p>
+<nav class="navbar navbar-dark navbar-expand-lg p-0">
+  <div class="container-fluid pe-0">
+    <!-- Hamburger Option for vertical nav -->
+    <a class="navbar-brand text" href="#">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="28"
+        height="28"
+        fill="currentColor"
+        class="bi bi-list"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+        />
+      </svg>
+      <strong class="pt-1">All</strong>
+    </a>
+    <!-- nav items -->
+    <div class="nav-fill w-100" id="navbarSupportedContent">
+      <!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0"> -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <span class="d-flex flex-row">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Amazon miniTV</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Sell</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Best Sellers</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Today's Deals</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Mobiles</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >New Releases</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Customer Service</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"
+              >Prime
+              <fa-icon
+                class="d-inline fa-xs"
+                [icon]="faCaretDown"
+                style="color: grey"
+              ></fa-icon>
+            </a>
+          </li>
+        </span>
+        <!-- app icon -->
+        <li class="nav-item app-ico d-flex flex-row-reverse">
+          <img src="assets/promotion/app-icon-link.jpg" alt="" srcset="" />
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
