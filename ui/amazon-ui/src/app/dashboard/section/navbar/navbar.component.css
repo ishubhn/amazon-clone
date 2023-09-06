@@ -1,5 +1,7 @@
-a:hover, .logo:hover {
+a:hover,
+.logo:hover {
   border: solid;
+  border-color: #fff;
 }
 
 input {
@@ -10,11 +12,20 @@ input::placeholder {
   color: rgb(108, 108, 108);
 }
 
+input[type="search"]:focus {
+  background-color: #fff;
+  outline: none !important;
+  box-shadow: none; /* to remove blue shadow around input */
+}
+
 /* Style the select tag */
 select {
   background-color: #e4e3e3;
   color: #545454;
   font-weight: 600;
+  /* Removed borders for top and bottom */
+  border-top: none;
+  border-bottom: none;
 }
 
 /* to style the drop-down items */
@@ -26,6 +37,14 @@ select:focus {
 select:focus option {
   width: auto;
   white-space: nowrap;
+}
+
+/* classes and id's style */
+.badge {
+  color: orange;
+  background-color: #0f1111;
+  padding: 1px;
+  margin: 1px;
 }
 
 .categories {
@@ -55,15 +74,28 @@ select:focus option {
 }
 
 .text {
-  font-size: .875rem;
-  line-height: .875rem;
+  font-size: 0.875rem;
+  line-height: 0.875rem;
+}
+
+#regions {
+  color: #fff;
 }
 
 #searchBtn {
-  background-color: #FEBD69;
+  background-color: #febd69;
   border-radius: 0;
 }
 
 #searchBtn:hover {
   background-color: #efa94d;
+}
+
+.search-btn-group input[type="search"] {
+  border: none;
+}
+
+.search-btn-group:focus-within {
+  border: 3px solid orange !important;
+  border-radius: 10px;
 }
