@@ -4,7 +4,7 @@
 >
   <div class="container-fluid">
     <!-- amazon logo dark -->
-    <div class="d-flex">
+    <div class="d-flex logo">
       <img class="d-inline" [src]="logoPath" alt="amazon logo" width="100px" />
       <span id="domain" class="d-inline">.in</span>
     </div>
@@ -19,8 +19,7 @@
     <div class="nav-fill w-100" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <!-- Delivery location -->
-        <li class="nav-item ms-3">
-          <!-- <p class="d-inline text-start" style="line-height: 0 !important;" *ngIf="!isLoginSuccess"> -->
+        <li class="nav-item">
           <a class="nav-link text-light text-start navbar-text text" *ngIf="!isLoginSuccess">
             <span class="small ps-3"
               >Delivering to {{ address.city }} {{ address.pinCode }} </span
@@ -28,8 +27,7 @@
               ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-geo-alt" viewBox="0 0 16 16">
                 <path d="M12.166 8.94c-.524 1.062-1.234 2.12-1.96 3.07A31.493 31.493 0 0 1 8 14.58a31.481 31.481 0 0 1-2.206-2.57c-.726-.95-1.436-2.008-1.96-3.07C3.304 7.867 3 6.862 3 6a5 5 0 0 1 10 0c0 .862-.305 1.867-.834 2.94zM8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10z"/>
                 <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-              </svg>Sign in to update your location</strong
-            >
+              </svg>Sign in to update your location</strong>
           </a>
           <p
             class="address-block d-inline text text-start"
@@ -43,8 +41,7 @@
           </p>
         </li>
         <!-- Form for Search Bar -->
-        <li class="nav-item ms-4">
-          <!-- <a class="nav-link" href="#">Link</a> -->
+        <li class="nav-item m-auto">
           <!-- Form group -->
           <form class="d-flex" role="search">
             <!-- Categories Button Select -->
@@ -59,7 +56,7 @@
               <option value="books">Books</option>
             </select>
             <input
-              class="form-control rounded-0 w-auto"
+              class="form-control rounded-0 pe-5 input-bar w-100"
               type="search"
               placeholder="Search Amazon.in"
               aria-label="Search"
@@ -74,7 +71,7 @@
           </form>
         </li>
         <!-- Region and Language -->
-        <li class="nav-item language dropdown ms-4">
+        <li class="nav-item language dropdown">
           <a
             class="nav-link dropdown-toggle navbar-text text"
             href="#"
@@ -91,19 +88,19 @@
           </ul>
         </li>
         <!-- Account -->
-        <li class="nav-item ms-4">
+        <li class="nav-item">
           <a class="nav-link text-light text-start navbar-text text">
             <span>Hello, sign in</span><br /><strong>Account & Lists</strong>
           </a>
         </li>
         <!-- Returns -->
-        <li class="nav-item ms-4">
+        <li class="nav-item">
           <a class="nav-link text-light text-start navbar-text text"
             ><span>Returns</span><br /><strong>&amp; Orders</strong></a
           >
         </li>
         <!-- Cart -->
-        <li class="nav-item ms-4">
+        <li class="nav-item">
           <a class="nav-link text-light navbar-text text"
             >
             <!-- <fa-icon class="d-inline fa-2xl" [icon]="faCart"></fa-icon> -->
