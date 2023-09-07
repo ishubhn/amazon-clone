@@ -26,6 +26,7 @@
   object-fit: cover;
   width: 130%;
   height: 100%;
+  transform: translate(-9%);
 }
 
 .icon {
@@ -37,6 +38,9 @@
   width: 120px;
   height: 100px;
   overflow: hidden;
+  padding-left: 0;
+  /* padding-right: 0; */
+  margin-left: 0;
 }
 
 .link {
