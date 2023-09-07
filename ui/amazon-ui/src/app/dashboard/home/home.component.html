@@ -2,7 +2,7 @@
   <app-navbar></app-navbar>
   <app-navbar-bottom></app-navbar-bottom>
 </div>
-<div class="container-fluid px-0">
+<div class="container-fluid px-0 position-relative">
   <!-- Product Cards Carousel -->
   <div
     id="carouselExampleAutoplaying"
@@ -55,54 +55,87 @@
     </button>
   </div>
   <!-- Cards -->
-  <div class="row justify-content-evenly m-auto px-4 text-start">
-    <div class="col-3">
-      <div class="card h-100 rounded-0">
-        <div class="card-body">
-          <h2 class="card-title"><strong>Revamp your home in style</strong></h2>
-          <p class="card-text">
-            <a href="#" class="small link pt-2">Explore all</a>
-          </p>
+  <div class="position-absolute top-50 start-0">
+    <div class="row justify-content-evenly m-auto px-2 text-start z-1">
+      <!-- Card 1 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body z-3">
+            <h2 class="card-title">
+              <strong>Revamp your home in style</strong>
+            </h2>
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-style/product-1.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-style/product-2.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-style/product-3.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-style/product-4.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <p class="card-text">
+              <a href="#" class="small link pt-2">Explore all</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Card 2 -->
-    <div class="col-3">
-      <div class="card h-100 rounded-0">
-        <div class="card-body">
-          <h2 class="card-title">
-            <strong>Up to 60% off | Styles for men</strong>
-          </h2>
-          <p class="card-text">
-            <a href="#" class="small link">See all offers</a>
-          </p>
+      <!-- Card 2 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body">
+            <h2 class="card-title">
+              <strong>Up to 60% off | Styles for men</strong>
+            </h2>
+            <p class="card-text">
+              <a href="#" class="small link">See all offers</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Card 3 -->
-    <div class="col-3">
-      <div class="card h-100 rounded-0">
-        <div class="card-body">
-          <h2 class="card-title">
-            <strong>Appliances for your home | Up to 55% off</strong>
-          </h2>
-          <p class="card-text">
-            <a href="#" class="small link">Explore All</a>
-          </p>
+      <!-- Card 3 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body">
+            <h2 class="card-title">
+              <strong>Appliances for your home | Up to 55% off</strong>
+            </h2>
+            <p class="card-text">
+              <a href="#" class="small link">Explore All</a>
+            </p>
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Card 4 -->
-    <div class="col-3">
-      <div class="card h-100 rounded-0">
-        <div class="card-body">
-          <h2 class="card-title">
-            <strong>Sign in for your best experience</strong>
-          </h2>
-          <p class="card-text"></p>
+      <!-- Card 4 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body z-3">
+            <h2 class="card-title">
+              <strong>Sign in for your best experience</strong>
+            </h2>
+            <p class="card-text"></p>
+          </div>
         </div>
       </div>
     </div>

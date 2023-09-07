@@ -69,6 +69,12 @@ select:focus option {
   padding: 12px;
 }
 
+.link-2 {
+  color: #c1c1c1;
+  font-weight: 600;
+  padding-left: 3px;
+}
+
 .nav-bg-content {
   background-color: #0f1111 !important;
 }
