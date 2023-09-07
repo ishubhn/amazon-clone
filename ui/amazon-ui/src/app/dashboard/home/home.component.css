@@ -18,9 +18,11 @@
   line-height: 27.3px !important;
 }
 
-.container-fluid {
-  background-color: #e4e4e4;
-}
+/* .container-body {
+  background-color: #c6c6c6;
+  height: 1000px;
+  mix-blend-mode: overlay;
+} */
 
 .cropped-image {
   object-fit: cover;

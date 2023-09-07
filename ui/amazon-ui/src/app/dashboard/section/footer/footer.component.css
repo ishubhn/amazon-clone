@@ -1,0 +1,15 @@
+.footer-body {
+  background-color: #232F3E;
+  color: #fff;
+}
+
+.message {
+  background-color: #37475a;
+  color: #fff;
+  height: 40px;
+}
+
+.message:hover {
+  background-color: #485769;
+  cursor: pointer;
+}
