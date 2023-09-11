@@ -1,3 +1,27 @@
+ul {
+  list-style-type: none;
+}
+
+ul:first-child {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+li {
+  padding-top: 0.5rem;
+}
+
+li > a {
+  text-decoration: none;
+  font-weight: 500;
+  color: rgb(236, 231, 231);
+  font-size: 14px;
+}
+
+li > a:hover {
+  text-decoration: underline;
+}
+
 .footer-body {
   background-color: #232F3E;
   color: #fff;
