@@ -3,45 +3,81 @@ ul {
 }
 
 ul:first-child {
-  font-size: 16px;
-  margin-bottom: 4px;
+  font-size: 1rem;
+  margin-bottom: .25rem;
 }
 
 li {
-  padding-top: 0.5rem;
+  padding-top: 8px;
 }
 
 li > a {
   text-decoration: none;
   font-weight: 500;
   color: rgb(236, 231, 231);
-  font-size: 14px;
+  font-size: .875rem;
 }
 
 li > a:hover {
   text-decoration: underline;
 }
 
+table {
+  border-collapse: collapse;
+  border-spacing: 3.125rem 0;
+  margin: auto;
+  text-align: start;
+  font-size: 12px;
+  width: 80%;
+}
+
+td {
+  padding-right: 2.5rem;
+  color: #999;
+  padding-top: 0;
+}
+
+th {
+  padding-bottom: 0;
+}
+
+/* Styles for class and id */
 .external-products {
-  background-color: #131A22;
+  background-color: #131a22;
+  color: #fff;
 }
 
 .footer-body {
-  background-color: #232F3E;
+  background-color: #232f3e;
   color: #fff;
 }
 
 .footer-regions {
-  font-size: 12px !important;
+  font-size: .75rem !important;
   width: 75%;
   justify-content: center;
   margin: auto;
 }
 
+.footer-last {
+  background-color: #131a22;
+  color: #fff;
+  font-size: .75rem;
+  height: 100px;
+}
+
+.help-bar {
+  font-size: .75rem !important;
+}
+
+.help-bar > li {
+  padding-right: 24px !important;
+}
+
 .message {
   background-color: #37475a;
   color: #fff;
-  height: 40px;
+  height: 2.5rem;
 }
 
 .message:hover {
