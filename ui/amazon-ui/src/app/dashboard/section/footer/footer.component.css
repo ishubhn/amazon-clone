@@ -22,9 +22,20 @@ li > a:hover {
   text-decoration: underline;
 }
 
+.external-products {
+  background-color: #131A22;
+}
+
 .footer-body {
   background-color: #232F3E;
   color: #fff;
+}
+
+.footer-regions {
+  font-size: 12px !important;
+  width: 75%;
+  justify-content: center;
+  margin: auto;
 }
 
 .message {
