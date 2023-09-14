@@ -18,6 +18,12 @@
   line-height: 27.3px !important;
 }
 
+.cards-container {
+  /* background-color: #c6cfd1; */
+  background: linear-gradient(to top, #c6cfd1, transparent);
+  z-index: 2;
+}
+
 .container-img {
   overflow: hidden;
   width: 100%;

@@ -1,7 +1,4 @@
-<nav
-  class="navbar navbar-expand-lg nav-bg-content py-1"
-  data-bs-theme="dark"
->
+<nav class="navbar navbar-expand-lg nav-bg-content py-1" data-bs-theme="dark">
   <div class="container-fluid">
     <!-- amazon logo dark -->
     <div class="d-flex logo">
@@ -25,7 +22,8 @@
             *ngIf="!isLoginSuccess"
           >
             <span class="small ps-3"
-              ><span class="link-2">Delivering to</span> {{ address.city }} {{ address.pinCode }} </span
+              ><span class="link-2">Delivering to</span> {{ address.city }}
+              {{ address.pinCode }} </span
             ><br /><strong
               ><svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -40,7 +38,8 @@
                 />
                 <path
                   d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
-                /></svg>
+                />
+              </svg>
               Sign in to update your location</strong
             >
           </a>
@@ -59,7 +58,7 @@
         <li class="nav-item m-auto">
           <!-- Form group -->
           <form class="d-flex search-btn-group" role="search">
-            <!-- Categories Button Select -->
+            <!-- Categories Button Select 1 -->
             <select
               class="form-select categories rounded-start"
               id="floatingSelect"
@@ -70,6 +69,7 @@
               <option value="electronics">Electronics</option>
               <option value="books">Books</option>
             </select>
+            <!-- Search bar -->
             <input
               class="form-control rounded-0 pe-5 input-bar w-100"
               type="search"
@@ -143,9 +143,13 @@
               </svg>
               <!-- Count of cart items for user -->
               <!-- by default 0 -->
-              <span class="badge badge-dark rounded-circle position-absolute top-0 start-50 translate-middle fs-5">5</span>
+              <span
+                class="badge badge-dark rounded-circle position-absolute top-0 start-50 translate-middle fs-5"
+                >5</span
+              >
             </span>
-            Cart</a>
+            Cart</a
+          >
         </li>
       </ul>
     </div>
