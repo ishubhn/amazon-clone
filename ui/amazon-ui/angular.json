@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "amazon-ui:build:production"
+              "buildTarget": "amazon-ui:build:production"
             },
             "development": {
-              "browserTarget": "amazon-ui:build:development"
+              "buildTarget": "amazon-ui:build:development"
             }
           },
           "defaultConfiguration": "development"
