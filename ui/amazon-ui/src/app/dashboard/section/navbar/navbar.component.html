@@ -17,15 +17,12 @@
       <ul class="navbar-nav">
         <!-- Delivery location -->
         <li class="nav-item">
-          <a
-            class="nav-link text-light text-start navbar-text text"
-            *ngIf="!isLoginSuccess"
-          >
-            <span class="small ps-3"
-              ><span class="link-2">Delivering to</span> {{ address.city }}
-              {{ address.pinCode }} </span
-            ><br /><strong
-              ><svg
+          <a class="nav-link text-light text-start navbar-text text" *ngIf="!isLoginSuccess">
+            <span class="small ps-3">
+              <span class="link-2">Delivering to</span> {{ address.city }}
+                {{ address.pinCode }} </span><br /><strong>
+              <!-- Location Pin Icon -->
+              <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
                 height="16"
@@ -40,9 +37,9 @@
                   d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4zm0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
                 />
               </svg>
-              Sign in to update your location</strong
-            >
+              Sign in to update your location</strong>
           </a>
+          <!-- Show user address after login successful -->
           <p
             class="address-block d-inline text text-start"
             *ngIf="isLoginSuccess"

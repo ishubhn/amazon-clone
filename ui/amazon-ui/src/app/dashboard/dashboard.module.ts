@@ -6,6 +6,7 @@ import { FooterComponent } from './section/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NavbarBottomComponent } from './section/navbar-bottom/navbar-bottom.component';
+import { AppRoutingModule } from "src/app/app-routing.module";
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { NavbarBottomComponent } from './section/navbar-bottom/navbar-bottom.com
   imports: [
     CommonModule,
     FontAwesomeModule,
-    FormsModule
-  ]
+    FormsModule,
+    AppRoutingModule
+]
 })
 export class DashboardModule { }
