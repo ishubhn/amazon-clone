@@ -23,6 +23,7 @@ jobs:
 
       - name: Build Angular app
         run: npm run build -- --configuration production --base-href /projects/amazon/
+        working-directory: ui/amazon-ui
 
       - name: Deploy to Portfolio Repo
         uses: peaceiris/actions-gh-pages@v4
@@ -30,5 +31,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           external_repository: ishubhn/ishubhn.github.io
           publish_branch: gh-pages
-          publish_dir: ./dist/amazon-ui
+          publish_dir: ./ui/amazon-ui/dist/amazon-ui
           destination_dir: projects/amazon
