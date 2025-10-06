@@ -1,24 +1,27 @@
 <div class="card h-100 rounded-0">
   <div class="card-body z-3">
     <!-- Card Header -->
-    <h2 class="card-title text-truncate" style="min-height:3.2rem; white-space:normal;">
+    <h2
+      class="card-title text-truncate"
+      style="min-height: 3.2rem; white-space: normal"
+    >
       <strong>{{ cardHeader }}</strong>
     </h2>
 
     <!-- Card Body -->
     <!-- Dynamic Products -->
     @for (row of chunkedItems; track $index) {
-    <div class="row justify-content-evenly py-2 pb-4">
-      @for (item of row; track item.id) {
-      <div class="col-6 image-container">
-        <img [src]="item.imagePath" [alt]="item.alt" class="cropped-image" />
+      <div class="row justify-content-evenly py-2 pb-4">
+        @for (item of row; track item.id) {
+          <div class="col-6 image-container">
+            <img [src]="item.imagePath" [alt]="item.alt" class="cropped-image" />
+          </div>
+        }
       </div>
-      }
-    </div>
     }
-    
+
     <p class="card-text">
-      <a href="#" class="small link pt-2">Explore all</a>
+      <a href="linkHref" class="small link pt-2">{{ displayLink }}</a>
     </p>
   </div>
 </div>

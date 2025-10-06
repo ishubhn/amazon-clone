@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CatalogueItem } from 'src/app/interface/catalogue-item';
+import { LinkText } from 'src/app/interface/link-text';
 
 @Component({
   selector: 'catalogue-card',
@@ -12,6 +13,9 @@ export class CatalogueCardComponent {
   
   @Input() 
   items: CatalogueItem[] = [];
+
+  @Input()
+  linkText?: LinkText;
 
   get chunkedItems() {
     const chunkSize = 2;
@@ -35,4 +39,12 @@ export class CatalogueCardComponent {
       );
     }
   */
+
+  get displayLink() {
+    return this.linkText?.text || 'Explore All';
+  }
+
+  get linkHref() {
+    return this.linkText?.linkSrc || '#';
+  }
 }
