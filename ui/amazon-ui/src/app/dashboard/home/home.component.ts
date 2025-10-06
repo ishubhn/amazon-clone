@@ -82,4 +82,26 @@ export class HomeComponent implements OnInit {
     {id: 4, imagePath: 'assets/catalogue/cards/appliances-style/washing-machines.jpg'},
   ]
 
+  homeInventoryStyleItems: CatalogueItem[] = [
+    { id: 1, imagePath: 'assets/catalogue/cards/home-inventory-style/product-1.jpg'},
+    { id: 2, imagePath: 'assets/catalogue/cards/home-inventory-style/product-2.jpg'},
+    { id: 3, imagePath: 'assets/catalogue/cards/home-inventory-style/product-3.jpg'},
+    { id: 4, imagePath: 'assets/catalogue/cards/home-inventory-style/product-4.jpg'},
+  ];
+
+  womenStyleItems: CatalogueItem[] = [
+    {id: 1, imagePath: 'assets/catalogue/cards/women-style/product-1.jpg'},
+    {id: 2, imagePath: 'assets/catalogue/cards/women-style/product-2.jpg'},
+    {id: 3, imagePath: 'assets/catalogue/cards/women-style/product-3.jpg'},
+    {id: 4, imagePath: 'assets/catalogue/cards/women-style/product-4.jpg'},
+  ]
+
+  stationaryItems: CatalogueItem[] = [
+    {id: 1, imagePath: 'assets/catalogue/cards/stationary/product-1.jpg'},
+    {id: 2, imagePath: 'assets/catalogue/cards/stationary/product-2.jpg'},
+    {id: 3, imagePath: 'assets/catalogue/cards/stationary/product-3.jpg'},
+    {id: 4, imagePath: 'assets/catalogue/cards/stationary/product-4.jpg'},
+  ]
+
+  linkText = {linkSrc: "", text: "See all offers"}
 }
