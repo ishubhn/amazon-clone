@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { Carousel } from 'src/app/interface/carousel';
+import { CatalogueItem } from 'src/app/interface/catalogue-item';
 
 @Component({
   selector: 'app-home',
@@ -59,4 +60,26 @@ export class HomeComponent implements OnInit {
       altText: "Kitchen Tools"
     },
   ]
+
+  homeStyleItems: CatalogueItem[] = [
+    { id: 1, imagePath: 'assets/catalogue/cards/home-style/product-1.jpg'},
+    { id: 2, imagePath: 'assets/catalogue/cards/home-style/product-2.jpg'},
+    { id: 3, imagePath: 'assets/catalogue/cards/home-style/product-3.jpg'},
+    { id: 4, imagePath: 'assets/catalogue/cards/home-style/product-4.jpg'},
+  ];
+
+  menStyleItems: CatalogueItem[] = [
+    {id: 1, imagePath: 'assets/catalogue/cards/men-style/product-1.jpg'},
+    {id: 2, imagePath: 'assets/catalogue/cards/men-style/product-2.jpg'},
+    {id: 3, imagePath: 'assets/catalogue/cards/men-style/product-3.jpg'},
+    {id: 4, imagePath: 'assets/catalogue/cards/men-style/product-4.jpg'},
+  ]
+
+  applianceStyleItems: CatalogueItem[] = [
+    {id: 1, imagePath: 'assets/catalogue/cards/appliances-style/ac.jpg'},
+    {id: 2, imagePath: 'assets/catalogue/cards/appliances-style/refrigerators.jpg'},
+    {id: 3, imagePath: 'assets/catalogue/cards/appliances-style/microwaves.jpg'},
+    {id: 4, imagePath: 'assets/catalogue/cards/appliances-style/washing-machines.jpg'},
+  ]
+
 }
