@@ -1,0 +1,44 @@
+.card {
+  border: none;
+}
+
+.card-title {
+  font-size: 23px !important;
+  line-height: 27.3px !important;
+}
+
+/* 
+    // centers if line is only 1 row size
+    .card-header-height {
+    min-height: 3.2rem; // fits roughly two text lines at h2 size
+    display: flex;
+    align-items: center; // vertical centering 
+    } 
+*/
+
+.card-header-height {
+  height: 3.2rem;                /* ~2 lines */
+  line-height: 1.4rem;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;         /* show up to 2 lines */
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;       /* ensure ellipsis (...) shows */
+  white-space: normal;           /* allow wrapping to 2 lines */
+}
+
+.cropped-image {
+  object-fit: cover; /* maintain aspect ratio */
+  /* width: 130%; */
+  height: 100%;
+  transform: translate(-9%);
+}
+
+.image-container {
+  width: 120px;
+  height: 100px;
+  overflow: hidden;
+  padding-left: 0;
+  /* padding-right: 0; */
+  margin-left: 0;
+}
