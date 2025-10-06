@@ -32,5 +32,5 @@ jobs:
           personal_token: ${{ secrets.PERSONAL_TOKEN }}
           external_repository: ishubhn/ishubhn.github.io
           publish_branch: gh-pages
-          publish_dir: ./ui/amazon-ui/dist/amazon-ui
+          publish_dir: ./ui/amazon-ui/dist/amazon-ui/browser
           destination_dir: projects/amazon
