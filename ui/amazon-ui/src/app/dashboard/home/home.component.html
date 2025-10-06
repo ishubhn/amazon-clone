@@ -1,270 +1,262 @@
 <div>
-    <app-navbar></app-navbar>
-    <app-navbar-bottom></app-navbar-bottom>
+  <app-navbar></app-navbar>
+  <app-navbar-bottom></app-navbar-bottom>
 </div>
 <div class="container-fluid px-0 position-relative">
-    <!-- Product Cards Carousel -->
-    <div id="amazonCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-            <div *ngFor="let item of carouselItems; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
-                <a [routerLink]="['/search/category', item.searchCategory]">
-                    <img [src]="item.filePath" class="d-block w-100" [alt]="item.altText">
-                </a>
-            </div>
-        </div>
-        <!-- Carousel Action Btns -->
-        <button
-            class="carousel-control-prev"
-            type="button"
-            data-bs-target="#amazonCarousel"
-            data-bs-slide="prev">
-            <span class="carousel-control-prev-icon mb-5 icon" style="margin-left: -160px;" data-bs-theme-value="dark" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button
-            class="carousel-control-next"
-            type="button"
-            data-bs-target="#amazonCarousel"
-            data-bs-slide="next">
-            <span class="carousel-control-next-icon mb-5 icon" style="margin-right: -160px;" data-bs-theme-value="dark" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
+  <!-- Product Cards Carousel -->
+  <div id="amazonCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div
+        *ngFor="let item of carouselItems; let i = index"
+        [ngClass]="{ 'carousel-item': true, active: i === 0 }"
+      >
+        <a [routerLink]="['/search/category', item.searchCategory]">
+          <img
+            [src]="item.filePath"
+            class="d-block w-100"
+            [alt]="item.altText"
+          />
+        </a>
+      </div>
     </div>
-    <!-- Cards -->
-    <div class="position-absolute top-50 start-0 cards-container">
-        <!-- Row 1 -->
-        <div class="row justify-content-evenly m-auto px-2 text-start z-1">
-            <!-- Card 1 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body z-3">
-                        <h2 class="card-title">
-                            <strong>Revamp your home in style</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-style/product-1.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-style/product-2.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-style/product-3.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-style/product-4.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link pt-2">Explore all</a>
-                        </p>
-                    </div>
-                </div>
+    <!-- Carousel Action Btns -->
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#amazonCarousel"
+      data-bs-slide="prev"
+    >
+      <span
+        class="carousel-control-prev-icon mb-5 icon"
+        style="margin-left: -160px"
+        data-bs-theme-value="dark"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#amazonCarousel"
+      data-bs-slide="next"
+    >
+      <span
+        class="carousel-control-next-icon mb-5 icon"
+        style="margin-right: -160px"
+        data-bs-theme-value="dark"
+        aria-hidden="true"
+      ></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- Cards -->
+  <div class="position-absolute top-50 start-0 cards-container">
+    <!-- Row 1 -->
+    <div class="row justify-content-evenly m-auto px-2 text-start z-1">
+      <!-- Card 1 -->
+      <div class="col-3 px-2">
+        <catalogue-card
+          cardHeader="Revamp your home in style"
+          [items]="homeStyleItems"
+        ></catalogue-card>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-3 px-2">
+        <catalogue-card
+          cardHeader="Up to 60% off | Styles for men"
+          [items]="menStyleItems"
+        ></catalogue-card>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-3 px-2">
+        <catalogue-card
+          cardHeader="Appliances for your home | Up to 55% off"
+          [items]="applianceStyleItems"
+        ></catalogue-card>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-3 px-2">
+        <div class="card h-40 pb-3 rounded-0">
+          <div class="card-body z-3">
+            <h2 class="card-title">
+              <strong>Sign in for your best experience</strong>
+            </h2>
+            <div class="d-grid gap-2">
+              <button class="btn btn-warning btn-sm rounded-3" type="button">
+                Sign in securely
+              </button>
             </div>
-            <!-- Card 2 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <strong>Up to 60% off | Styles for men</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/men-style/product-1.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/men-style/product-2.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/men-style/product-3.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/men-style/product-4.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link">See all offers</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <strong>Appliances for your home | Up to 55% off</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/ac.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/refrigerators.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/microwaves.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/washing-machines.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link">Explore All</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="col-3 px-2">
-                <div class="card h-40 pb-3 rounded-0">
-                    <div class="card-body z-3">
-                        <h2 class="card-title">
-                            <strong>Sign in for your best experience</strong>
-                        </h2>
-                        <div class="d-grid gap-2">
-                            <button class="btn btn-warning btn-sm rounded-3" type="button">
-                                Sign in securely
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Laptop ads -->
-                <div class="card h-40 pb-3 mt-4 rounded-0">
-                    <div class="card-body p-0 z-3">
-                        <!-- <h2 class="card-title">
+          </div>
+        </div>
+        <!-- Laptop ads -->
+        <div class="card h-40 pb-3 mt-4 rounded-0">
+          <div class="card-body p-0 z-3">
+            <!-- <h2 class="card-title">
               <strong>Sign in for your best experience</strong>
             </h2> -->
-                        <!-- <div class="d-grid gap-2">
+            <!-- <div class="d-grid gap-2">
               <button class="btn btn-warning btn-sm rounded-3" type="button">Sign in securely</button>
             </div> -->
-                        <img src="assets/catalogue/cards/laptop-brands.jpg" class="card-img-top rounded-0">
-                    </div>
-                </div>
-            </div>
+            <img
+              src="assets/catalogue/cards/laptop-brands.jpg"
+              class="card-img-top rounded-0"
+            />
+          </div>
         </div>
-        <!-- Row 2 -->
-        <div class="row justify-content-evenly m-auto px-2 text-start z-1 pt-3">
-            <!-- Card 1 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body z-3">
-                        <h2 class="card-title">
-                            <strong>Starting ₹99 | All your home improvement...</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-inventory-style/product-1.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-inventory-style/product-2.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-inventory-style/product-3.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/home-inventory-style/product-4.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link pt-2">Explore all</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 2 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <strong>Up to 60% off | Styles for women</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/women-style/product-1.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/women-style/product-2.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/women-style/product-3.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/women-style/product-4.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link">See all offers</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 3 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <strong>Amazon Fresh | Great prices | Fruits &...</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/ac.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/refrigerators.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <div class="row justify-content-evenly py-2 pb-4">
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/microwaves.jpg" class="cropped-image">
-                            </div>
-                            <div class="col-6 image-container">
-                                <img src="assets/catalogue/cards/appliances-style/washing-machines.jpg" class="cropped-image">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link">See all offers</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <!-- Card 4 -->
-            <div class="col-3 px-2">
-                <div class="card h-100 rounded-0 body-container">
-                    <div class="card-body">
-                        <h2 class="card-title">
-                            <strong>Starting ₹99 | Start your fitness journey</strong>
-                        </h2>
-                        <!-- products -->
-                        <div class="row py-2 pb-1 product-container">
-                            <div class="container-img">
-                                <img src="assets/catalogue/cards/gymnastics-style/product.jpg" class="cropped-image-obj">
-                            </div>
-                        </div>
-                        <p class="card-text">
-                            <a href="#" class="small link">Explore All</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- footer -->
-        <app-footer></app-footer>
+      </div>
     </div>
+    <!-- Row 2 -->
+    <div class="row justify-content-evenly m-auto px-2 text-start z-1 pt-3">
+      <!-- Card 1 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body z-3">
+            <h2 class="card-title">
+              <strong>Starting ₹99 | All your home improvement...</strong>
+            </h2>
+            <!-- products -->
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-inventory-style/product-1.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-inventory-style/product-2.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-inventory-style/product-3.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/home-inventory-style/product-4.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <p class="card-text">
+              <a href="#" class="small link pt-2">Explore all</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 2 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body">
+            <h2 class="card-title">
+              <strong>Up to 60% off | Styles for women</strong>
+            </h2>
+            <!-- products -->
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/women-style/product-1.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/women-style/product-2.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/women-style/product-3.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/women-style/product-4.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <p class="card-text">
+              <a href="#" class="small link">See all offers</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 3 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0">
+          <div class="card-body">
+            <h2 class="card-title">
+              <strong>Amazon Fresh | Great prices | Fruits &...</strong>
+            </h2>
+            <!-- products -->
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/appliances-style/ac.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/appliances-style/refrigerators.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <div class="row justify-content-evenly py-2 pb-4">
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/appliances-style/microwaves.jpg"
+                  class="cropped-image"
+                />
+              </div>
+              <div class="col-6 image-container">
+                <img
+                  src="assets/catalogue/cards/appliances-style/washing-machines.jpg"
+                  class="cropped-image"
+                />
+              </div>
+            </div>
+            <p class="card-text">
+              <a href="#" class="small link">See all offers</a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Card 4 -->
+      <div class="col-3 px-2">
+        <div class="card h-100 rounded-0 body-container">
+          <div class="card-body">
+            <h2 class="card-title">
+              <strong>Starting ₹99 | Start your fitness journey</strong>
+            </h2>
+            <!-- products -->
+            <div class="row py-2 pb-1 product-container">
+              <div class="container-img">
+                <img
+                  src="assets/catalogue/cards/gymnastics-style/product.jpg"
+                  class="cropped-image-obj"
+                />
+              </div>
+            </div>
+            <p class="card-text">
+              <a href="#" class="small link">Explore All</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- footer -->
+    <app-footer></app-footer>
+  </div>
 </div>

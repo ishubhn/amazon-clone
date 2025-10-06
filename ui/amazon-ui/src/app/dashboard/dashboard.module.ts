@@ -7,20 +7,22 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 import { NavbarBottomComponent } from './section/navbar-bottom/navbar-bottom.component';
 import { AppRoutingModule } from "src/app/app-routing.module";
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
+    NavbarBottomComponent,
     NavbarComponent,
     FooterComponent,
-    NavbarBottomComponent
   ],
   imports: [
+    AppRoutingModule,
     CommonModule,
     FontAwesomeModule,
     FormsModule,
-    AppRoutingModule
+    SharedModule
 ]
 })
 export class DashboardModule { }

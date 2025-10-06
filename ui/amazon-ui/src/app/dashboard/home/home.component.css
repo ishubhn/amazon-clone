@@ -32,7 +32,7 @@
 }
 
 .cropped-image {
-  object-fit: cover;
+  object-fit: cover;  /* maintain aspect ratio */
   /* width: 130%; */
   height: 100%;
   transform: translate(-9%);
